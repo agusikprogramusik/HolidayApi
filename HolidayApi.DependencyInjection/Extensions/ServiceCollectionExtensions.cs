@@ -1,5 +1,11 @@
-﻿using HolidayApi.Common.Models.Entities;
+﻿using HolidayApi.AuthDomain.Commands.Auth.AccountLogin;
+using HolidayApi.AuthDomain.Commands.Auth.ConfirmEmail;
+using HolidayApi.AuthDomain.Commands.Auth.CreateAccount;
+using HolidayApi.AuthDomain.Commands.Auth.GenerateConfirmEmail;
+using HolidayApi.AuthDomain.Commands.User;
+using HolidayApi.Common.Models.Entities;
 using HolidayApi.Infrastructure.Persistence;
+using HolidayApi.TokenService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -40,9 +46,16 @@ namespace HolidayApi.DependencyInjection.Extensions
                 {
                     ValidateIssuer = false,
                     ValidateAudience = false,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("rsdftgsdgfrsrfgtdssrdtghglikjovbjcbxzffdgffgxbsdgfesavatysrydsdvyrf"))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("igufadigafdioadfigaiaougfodgog36543651686180953068jgfdfgkkafdkjdfab"))
                 };
             });
+
+            service.AddTransient<ICreateAccountHandler, CreateAccountHandler>();
+            service.AddTransient<IGenerateConfirmEmailHandler, GenerateConfirmEmailHandler>();
+            service.AddTransient<IConfirmEmailHandler, ConfirmEmailHandler>();
+            service.AddTransient<IJwtTokenService, JwtTokenService>();
+            service.AddTransient<IAccountLoginHandler, AccountLoginHandler>();
+            service.AddTransient<IUserHandler, UserHandler>();
 
             service.AddMapster();
             service.AddControllers();

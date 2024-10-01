@@ -10,10 +10,10 @@ public class User : IdentityUser<int>
     public string LastName { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
-    public float? HolidayTimeRemain { get; set; }
+    public float HolidayTimeRemain { get; set; }
     public DateTime DateOfBirth { get; set; }
-    public DateTime? StartDate { get; set; }
-    public DateTime? EndDate { get; set; }
+    public DateTime StartDate { get; set; }
+    public DateTime EndDate { get; set; }
     public bool IsFullTime { get; set; }
     #endregion
 
@@ -25,6 +25,6 @@ public class User : IdentityUser<int>
     public int RoleId { get; set; }
     public UserRole Role { get; set; }
     public ContactDetails? ContactDetails { get; set; }
-    public virtual IList<HolidayRequest> HolidayRequests { get; set; }
+    public virtual IList<HolidayRequest>? HolidayRequests { get; set; }
     #endregion
 }

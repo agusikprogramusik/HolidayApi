@@ -8,8 +8,8 @@ public class HolidayRequestDtoModel
     public DateTime EndDate { get; set; }
     public DateTime CreatedAt { get; set; }
     public HolidayRequestStatusEnum Status { get; set; }
-    public string? RejectionReason { get; set; }
-    public Guid UserId { get; set; }
-    public Guid? ApprovedById { get; set; }
+    public string RejectionReason { get; set; }
+    public int UserId { get; set; }
+    public int ApprovedById { get; set; }
 }
 

@@ -11,7 +11,7 @@ namespace HolidayApi.DependencyInjection.Extensions
         {
             services.AddDbContextPool<HolidayApiDbContext>(options =>
             {
-                options.UseSqlServer(configuration.GetSection("ConnectionString").Value,
+                options.UseSqlServer(configuration.GetConnectionString("HolidayApi"),
                     x => x.UseQuerySplittingBehavior(QuerySplittingBehavior.SingleQuery));
                 options.EnableDetailedErrors();
                 options.EnableSensitiveDataLogging();
